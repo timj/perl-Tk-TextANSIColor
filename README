@@ -1,0 +1,37 @@
+Tk::TextANSIColor
+-----------------
+
+Tk::TextANSIColor provides a sub-classed Tk::Text widget that 
+understands ANSI color codes.
+
+The ANSI color codes are replaced by tags in the Text widget.
+
+Requirements
+------------
+
+Requires perl/Tk and Term::ANSIColor modules.
+
+Has been tested with perl 5.004_04/5.005_03 on Linux RedHat5.2
+and Sparc Solaris 2.6 and Tk800.014.
+
+Installation
+------------
+
+This is a standard perl module. To install:
+
+  % perl Makefile.PL
+  % make
+  % make test
+  % make install
+
+Currently only one test is available which simply loads the module
+and exits.
+
+Author
+------
+
+This module was written by Tim Jenness (t.jenness@jach.hawaii.edu).
+
+Copyright (c) 1999 Tim Jenness. All rights reserved.  This
+program is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.

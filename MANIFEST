@@ -1,0 +1,5 @@
+Makefile.PL
+TextANSIColor.pm
+README
+MANIFEST
+t/require.t
