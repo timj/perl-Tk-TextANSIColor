@@ -6,7 +6,8 @@ WriteMakefile(
     'VERSION_FROM'   => 'TextANSIColor.pm',
     'PREREQ_PM' => { 
 	Term::ANSIColor => '1.00',
-	Tk => 0
+	Tk => 0,
+        Test => 0,
 	},
     'dist'      => { COMPRESS => "gzip -9f"},
     ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
