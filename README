@@ -2,7 +2,7 @@ Tk::TextANSIColor
 -----------------
 
 Tk::TextANSIColor provides a sub-classed Tk::Text widget that 
-understands ANSI color codes.
+understands ANSI color codes. A read-only widget is also supplied.
 
 The ANSI color codes are replaced by tags in the Text widget.
 
@@ -36,6 +36,8 @@ The tests require access to a graphics display.
 Changes
 -------
 
+V0.12  Add Read-only widget Tk::ROTextANSIColor
+
 V0.11  Add proper test routine. No other changes.
 
 V0.10  Initial Release
@@ -45,6 +47,6 @@ Author
 
 This module was written by Tim Jenness (t.jenness@jach.hawaii.edu).
 
-Copyright (c) 1999 Tim Jenness. All rights reserved.  This
+Copyright (C) 1999-2000 Tim Jenness. All rights reserved.  This
 program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
