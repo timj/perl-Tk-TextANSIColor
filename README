@@ -36,7 +36,8 @@ The tests require access to a graphics display.
 Changes
 -------
 
-V0.12  Add Read-only widget Tk::ROTextANSIColor
+V0.12  Add Read-only widget Tk::ROTextANSIColor at request of
+       Piotr Synowiec <mysiar@krakow.sky.pl>
 
 V0.11  Add proper test routine. No other changes.
 
