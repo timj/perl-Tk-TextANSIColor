@@ -8,7 +8,7 @@ require Tk::Text;
 use Term::ANSIColor;
 
 use vars qw/ $VERSION /;
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 # Inherit from Tk::Text
 use base qw(Tk::Text);
@@ -276,7 +276,7 @@ Tim Jenness (E<lt>F<t.jenness@jach.hawaii.edu>E<gt>)
 
 =head1 COPYRIGHT
 
-Copyright (c) 1999 Tim Jenness. All rights reserved.
+Copyright (c) 1999-2000 Tim Jenness. All rights reserved.
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
