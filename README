@@ -36,6 +36,9 @@ The tests require access to a graphics display.
 Changes
 -------
 
+V0.15  Tweak the way that fonts are specified in TextANSIColor
+       such that the Tk::Font system is used.
+
 V0.14  Add getansi() method from Jim Turner <turnerjw2@netscape.net>
        and related test. This allows the ANSI escape codes to be retrieved
        from the Text widget.
@@ -52,8 +55,8 @@ V0.10  Initial Release
 Author
 ------
 
-This module was written by Tim Jenness (t.jenness@jach.hawaii.edu).
+This module was written by Tim Jenness (tjenness@cpan.org).
 
-Copyright (C) 1999-2001 Tim Jenness. All rights reserved.  This
+Copyright (C) 1999-2001,2003 Tim Jenness. All rights reserved.  This
 program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
