@@ -4,11 +4,12 @@ use strict;
 
 require Tk;
 require Tk::Text;
+require Tk::Font;
 
 use Term::ANSIColor;
 
 use vars qw/ $VERSION /;
-$VERSION = '0.12';
+$VERSION = '0.13';
 
 # Inherit from Tk::Text
 use base qw(Tk::Text);
@@ -54,7 +55,8 @@ sub InitObject {
   }
   # Underline
   $widget->tagConfigure("ANSIul", -underline => 1);
-  $widget->tagConfigure("ANSIbd", -font => [-weight => "bold" ]);
+  $widget->tagConfigure("ANSIbd", 
+			-font => $widget->Font(weight => "bold") );
 
 #  return $widget;
 }
@@ -363,11 +365,11 @@ L<Tk::Text>, L<Term::ANSIColor>
 
 =head1 AUTHOR
 
-Tim Jenness (E<lt>F<t.jenness@jach.hawaii.edu>E<gt>)
+Tim Jenness (E<lt>F<tjenness@cpan.org>E<gt>)
 
 =head1 COPYRIGHT
 
-Copyright (c) 1999-2000 Tim Jenness. All rights reserved.
+Copyright (c) 1999-2001,2003 Tim Jenness. All rights reserved.
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 

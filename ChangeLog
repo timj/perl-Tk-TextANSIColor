@@ -1,3 +1,13 @@
+2003-08-18  Tim Jenness  <timj@jach.hawaii.edu>
+
+	* Makefile.PL: Version number to 0.15 and release.
+
+2003-05-15  Tim Jenness  <tjenness@cpan.org>
+
+	* TextANSIColor.pm (InitObject): The ANSIbd tag was not specifying
+	the bold weight correctly. It seemed to work but randomly. Now use
+	the Font method.
+
 2001-10-20  Tim Jenness  <t.jenness@jach.hawaii.edu>
 
 	* Makefile.PL: Up version number to 0.14
