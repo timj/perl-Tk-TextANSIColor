@@ -3,7 +3,7 @@
 use ExtUtils::MakeMaker;
 WriteMakefile(
     'NAME'      => 'Tk::TextANSIColor',
-    'VERSION_FROM'   => 'TextANSIColor.pm',
+    'VERSION    => '0.12',
     'PREREQ_PM' => { 
 	Term::ANSIColor => '1.00',
 	Tk => 0,
