@@ -3,6 +3,7 @@ TextANSIColor.pm
 ROTextANSIColor.pm
 README
 MANIFEST
+t/get.t
 t/require.t
 t/text.t
 t/rotext.t

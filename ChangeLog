@@ -1,3 +1,12 @@
+2001-10-20  Tim Jenness  <t.jenness@jach.hawaii.edu>
+
+	* Makefile.PL: Up version number to 0.14
+
+	* TextANSIColor.pm (getansi): Add getansi() method from Jim Turner
+	<turnerjw2@netscape.net> (plus some tweaks to the submitted code)
+	
+	* t/get.t: Add test for getansi()
+
 2000-11-24  Timothy Jenness  <timj@jach.hawaii.edu>
 
 	* README: Update to include information on read-only widget

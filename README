@@ -36,6 +36,10 @@ The tests require access to a graphics display.
 Changes
 -------
 
+V0.14  Add getansi() method from Jim Turner <turnerjw2@netscape.net>
+       and related test. This allows the ANSI escape codes to be retrieved
+       from the Text widget.
+
 V0.13  Forgot to include Tk::ROTextANSIColor in the MANIFEST!
 
 V0.12  Add Read-only widget Tk::ROTextANSIColor at request of
@@ -50,6 +54,6 @@ Author
 
 This module was written by Tim Jenness (t.jenness@jach.hawaii.edu).
 
-Copyright (C) 1999-2000 Tim Jenness. All rights reserved.  This
+Copyright (C) 1999-2001 Tim Jenness. All rights reserved.  This
 program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

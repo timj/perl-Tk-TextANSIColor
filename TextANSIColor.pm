@@ -8,7 +8,7 @@ require Tk::Text;
 use Term::ANSIColor;
 
 use vars qw/ $VERSION /;
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 # Inherit from Tk::Text
 use base qw(Tk::Text);
@@ -88,7 +88,7 @@ sub insert {
 
     my $text = $userstuff[$i];
     my $utags = $userstuff[$i+1];
-    
+
     # Store the usertags in an array, expanding the
     # array ref if required
     my @taglist = ();
@@ -191,6 +191,67 @@ sub insert {
 
 }
 
+sub getansi {
+  my $self= shift;  # The widget reference
+  my @args = @_;
+
+  # Indicate whether we are in an ANSI tag
+  my $tagflag = 0;
+
+  # Initialise the results string
+  my $res = '';
+
+  # Get detailed contents (including tags)
+  my @xdump = $self->dump(@args);
+
+  # Loop over the dumped array, incrementing in steps of 3
+  for (my $i=0;$i<=$#xdump;$i+=3) {
+
+    # This is a tag. Check to see whether it is for an ANSI
+    # control code.
+    if ($xdump[$i] eq 'tagon') {
+
+      if ($xdump[$i+1] =~ /^ANSIfg(\w+)/) {
+
+	$res .= color($1);
+	$tagflag = 1;
+	
+      } elsif ($xdump[$i+1] =~ /^ANSIbg(\w+)/) {
+
+	$res .= color("on_$1");
+	$tagflag = 1;
+	
+      } elsif ($xdump[$i+1] =~ /^ANSIbd/) {
+
+	$res .= color('bold');
+	$tagflag = 1;
+	
+      } elsif ($xdump[$i+1] =~ /^ANSIul/) {
+
+	$res .= color('underline');
+	$tagflag = 1;
+
+      }
+
+      $res .= $xdump[$i+4]  if ($xdump[$i+3] eq 'text');
+    }
+
+    if ($tagflag && $xdump[$i] eq 'tagoff') {
+
+      $res .= color('reset');
+      $tagflag = 0;
+
+    } elsif ($i > 3 && $xdump[$i] eq 'text' && $xdump[$i-3] ne 'tagon') {
+
+      $res .= $xdump[$i+1];
+
+    }
+
+  }
+
+  return $res;
+}
+
 1;
 
 __END__
@@ -211,6 +272,7 @@ Tk::TextANSIColor - Tk::Text widget with support for ANSI color escape codes
   $wid = $mw->TextANSIColor(?options,...?);
 
   $wid->insert($pos, $string, ?taglist, ?string, ?taglist);
+  $string_with_escape_codes = $wid->getansi('0.0','end');
 
   use Term::ANSIColor; 
   $red = color('red');  # Retrieve color codes
@@ -224,7 +286,7 @@ widget by adding support for ANSI color escape codes. When these
 escape codes are detected they are replaced by equivalent tags.
 
 This widget was developed to solve the problem associated with
-driving a scrolling status display on a GUI as well as a status display 
+driving a scrolling status display on a GUI as well as a status display
 going to an Xterm without having to know whether an xterm
 or Tk window is receiving the status information. Mainly used
 in conjunction with a tied filehandle:
@@ -238,9 +300,38 @@ in conjunction with a tied filehandle:
   print TEXT $info
   print STDOUT $info
 
-Currently the Term::ANSIColor module is required in order
-to decode the escape codes (and probably to generate them in
-the first place).
+Currently the L<Term::ANSIColor|Term::ANSIColor> module is required in
+order to decode the escape codes (and probably to generate them in the
+first place).
+
+=head1 METHODS
+
+The following methods are available in addition to those described
+in the documentation for L<Tk::Text|Tk::Text>:
+
+=over 4
+
+=item B<getansi>
+
+  $widget->getansi(index1, ?index2?)
+
+Similar to the standard C<get> method for C<Tk::Text> widgets, except
+it returns a range of characters from the text with the ANSI
+escape-codes embedded. This allows one to insert a string containing
+ANSI escape-codes into the widget, manipulate them, and fetch them
+back from the widget with the escape codes intact.  The return value
+will be all the characters in the text starting with the one whose
+index is C<index1> and ending just before the one whose index is
+C<index2> (the character at C<index2> will not be returned). If
+C<index2> is omitted then the single character at C<index1> is
+returned. If there are no characters in the specified range
+(e.g. C<index1> is past the end of the file or C<index2> is less than
+or equal to index1) then an empty string is returned. If the specified
+range contains embedded windows, no information about them is included
+in the returned string.  Use the standard C<get> method to fetch the
+string without ANSI escape-codes.
+
+=back
 
 =head1 TAGS
 
