@@ -36,6 +36,8 @@ The tests require access to a graphics display.
 Changes
 -------
 
+V0.13  Forgot to include Tk::ROTextANSIColor in the MANIFEST!
+
 V0.12  Add Read-only widget Tk::ROTextANSIColor at request of
        Piotr Synowiec <mysiar@krakow.sky.pl>
 
