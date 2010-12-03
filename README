@@ -11,7 +11,7 @@ Requirements
 
 Requires the following modules:
 
-  Tk  
+  Tk
   Term::ANSIColor
   Test
 
@@ -35,6 +35,9 @@ The tests require access to a graphics display.
 
 Changes
 -------
+
+V0.16  Use Module::Build and Test::More
+       Fix CPAN Testers failure with no X display
 
 V0.15  Tweak the way that fonts are specified in TextANSIColor
        such that the Tk::Font system is used.
