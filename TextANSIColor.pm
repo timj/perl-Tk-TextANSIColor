@@ -9,7 +9,7 @@ require Tk::Font;
 use Term::ANSIColor;
 
 use vars qw/ $VERSION /;
-$VERSION = '0.13';
+$VERSION = '0.15';
 
 # Inherit from Tk::Text
 use base qw(Tk::Text);
