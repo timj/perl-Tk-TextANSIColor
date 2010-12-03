@@ -2,7 +2,7 @@
 
 	* Build.PL: Switch to Module::Build
 
-2003-08-18  Tim Jenness  <timj@jach.hawaii.edu>
+2003-08-18  Tim Jenness  <tjenness@cpan.org>
 
 	* Makefile.PL: Version number to 0.15 and release.
 
@@ -12,7 +12,7 @@
 	the bold weight correctly. It seemed to work but randomly. Now use
 	the Font method.
 
-2001-10-20  Tim Jenness  <t.jenness@jach.hawaii.edu>
+2001-10-20  Tim Jenness  <tjenness@cpan.org>
 
 	* Makefile.PL: Up version number to 0.14
 
@@ -21,7 +21,7 @@
 	
 	* t/get.t: Add test for getansi()
 
-2000-11-24  Timothy Jenness  <timj@jach.hawaii.edu>
+2000-11-24  Timothy Jenness  <tjenness@cpan.org>
 
 	* README: Update to include information on read-only widget
 
@@ -34,17 +34,17 @@
 
 	* ROTextANSIColor.pm: Add
 
-2000-05-02  Tim Jenness  <timj@jach.hawaii.edu>
+2000-05-02  Tim Jenness  <tjenness@cpan.org>
 
 	* TextANSIColor.pm: Update version number to 0.11 
 
 	* README: Update for V0.11
  	
-2000-05-01  Tim Jenness  <timj@jach.hawaii.edu>
+2000-05-01  Tim Jenness  <tjenness@cpan.org>
 
 	* t/text.t: Add proper test
 
-1999-05-18  Tim Jenness  <timj@jach.hawaii.edu>
+1999-05-18  Tim Jenness  <tjenness@cpan.org>
 	
 	* Release V0.10
 	

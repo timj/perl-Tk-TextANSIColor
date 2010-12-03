@@ -71,7 +71,7 @@ L<Tk::ROText>, L<Tk::TextANSIColor>
 
 =head1 AUTHOR
 
-Tim Jenness (E<lt>F<t.jenness@jach.hawaii.edu>E<gt>)
+Tim Jenness (E<lt>tjenness@cpan.orgE<gt>)
 
 =head1 COPYRIGHT
 
