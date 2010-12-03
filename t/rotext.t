@@ -24,14 +24,16 @@ require_ok( "Tk::ROTextANSIColor" );
 
 # Create new Tk
 
-my $MW = MainWindow->new();
+SKIP: {
+
+my $MW = eval { MainWindow->new() };
+
+# If we have not managed to get a MainWindow that probably
+# means we are running headless so skip all remaining tests
+skip("Unable to launch Tk MainWindow. Is there a display attached?", 12)
+  unless defined $MW;
 
 ok( defined $MW, "MainWindow" );
-
-# Abort if this is not working
-
-die "Unable to create Tk object. Not on a graphics display??"
-	unless defined $MW;
 
 # Create a simple text wiget
 
@@ -44,13 +46,13 @@ isa_ok( $text, "Tk::ROTextANSIColor" );
 $MW->update;
 
 # Some normal text
-doprint("Normal text, no ANSI codes\n");
+doprint($text, "Normal text, no ANSI codes\n");
 ok(1, "Printed normal text");
 
 # Some colored text
 
 foreach (qw/ red green blue magenta yellow cyan bold underline /) {
-  doprint( colored("This is a test of $_\n", "$_") );
+  doprint( $text, colored("This is a test of $_\n", "$_") );
   ok(1, "colored text");
 }
 
@@ -70,6 +72,7 @@ $tie->update;
 
 sleep 3;
 
+}
 
 exit;
 
@@ -78,6 +81,7 @@ exit;
 # could do it with a tied filehandle instead
 
 sub doprint {
+  my $text = shift;
   my $str = shift;
   my $ret = $text->insert('end', $str);
   $text->update;
