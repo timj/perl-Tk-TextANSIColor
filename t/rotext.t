@@ -11,27 +11,22 @@
 #  In order to do this it simply keeps the window up for a few seconds
 #  in case anyone needs to look at it
 
+# Copyright (C) 2010 Tim Jenness
 # Copyright (C) 2000 Tim Jenness and the Particle Physics and Astronomy
 # Research Council. All Rights Reserved.
 
 use strict;
-use Test;
+use Test::More tests => 13;
 
-BEGIN { plan tests => 13 }
-
-use Tk;
-use Tk::ROTextANSIColor;
 use Term::ANSIColor;
-
-
-ok(1);
-
+use Tk;
+require_ok( "Tk::ROTextANSIColor" );
 
 # Create new Tk
 
 my $MW = MainWindow->new();
 
-ok( defined $MW );
+ok( defined $MW, "MainWindow" );
 
 # Abort if this is not working
 
@@ -42,27 +37,28 @@ die "Unable to create Tk object. Not on a graphics display??"
 
 my $text = $MW->ROTextANSIColor->pack;
 
-ok( defined $text );
+print "Text $text\n";
+isa_ok( $text, "Tk::ROTextANSIColor" );
 
 # We dont want to run an event loop - just do an update
 $MW->update;
 
 # Some normal text
 doprint("Normal text, no ANSI codes\n");
-ok(1);
+ok(1, "Printed normal text");
 
 # Some colored text
 
 foreach (qw/ red green blue magenta yellow cyan bold underline /) {
   doprint( colored("This is a test of $_\n", "$_") );
-  ok(1);
+  ok(1, "colored text");
 }
 
 # Now try a tie
 use vars qw/ *HDL /;
 my $tie = tie(*HDL, ref($text), $text);
 
-ok(defined $tie);
+ok(defined $tie, "Got Tie");
 
 # Cant yet test the return status of a print from a tied text widget
 # since it always returns undef (as of v800.021).
