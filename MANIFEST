@@ -1,6 +1,6 @@
-Makefile.PL
-TextANSIColor.pm
-ROTextANSIColor.pm
+Build.PL
+lib/Tk/TextANSIColor.pm
+lib/Tk/ROTextANSIColor.pm
 README
 MANIFEST
 t/get.t
@@ -8,3 +8,5 @@ t/require.t
 t/text.t
 t/rotext.t
 ChangeLog
+META.yml
+MANIFEST.SKIP
