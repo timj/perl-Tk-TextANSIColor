@@ -1,7 +1,7 @@
 Tk::TextANSIColor
 -----------------
 
-Tk::TextANSIColor provides a sub-classed Tk::Text widget that 
+Tk::TextANSIColor provides a sub-classed Tk::Text widget that
 understands ANSI color codes. A read-only widget is also supplied.
 
 The ANSI color codes are replaced by tags in the Text widget.

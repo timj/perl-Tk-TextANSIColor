@@ -30,7 +30,7 @@
 	* README: Update to include information on read-only widget
 
 	* Makefile.PL: Version now written into file since there are now 2 .pm
-	files. 
+	files.
 
 	* t/require.t: Use Test module and add ROTextANSIColor
 
@@ -40,10 +40,10 @@
 
 2000-05-02  Tim Jenness  <tjenness@cpan.org>
 
-	* TextANSIColor.pm: Update version number to 0.11 
+	* TextANSIColor.pm: Update version number to 0.11
 
 	* README: Update for V0.11
- 	
+
 2000-05-01  Tim Jenness  <tjenness@cpan.org>
 
 	* t/text.t: Add proper test

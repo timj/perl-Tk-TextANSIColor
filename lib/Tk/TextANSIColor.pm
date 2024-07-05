@@ -55,7 +55,7 @@ sub InitObject {
   }
   # Underline
   $widget->tagConfigure("ANSIul", -underline => 1);
-  $widget->tagConfigure("ANSIbd", 
+  $widget->tagConfigure("ANSIbd",
 			-font => $widget->Font(weight => "bold") );
 
 #  return $widget;
@@ -73,7 +73,7 @@ sub insert {
   my @userstuff = @_; # Strings and tags
 
   # This is the array containing text and tags pairs
-  # We pass this to SUPER::insert 
+  # We pass this to SUPER::insert
   # as (POS, string, [tags], string, [tags]....)
   # insert_array contains string,[tags] pairs
   my @insert_array = ();
@@ -83,7 +83,7 @@ sub insert {
   # note that multiple sets of text strings and tags can be supplied
   # as arguments to the insert() method, and we have to process
   # each set in turn.
-  # Use an old-fashioned for since we have to extract two items at 
+  # Use an old-fashioned for since we have to extract two items at
   # a time
 
   for (my $i=0; $i <= $#userstuff; $i += 2) {
@@ -110,8 +110,8 @@ sub insert {
 
     # Array containing the tags to use with the insertion
     # Note that this routine *always* assumes the colors are reset
-    # after the last insertion. ie it does not allow the colors to be 
-    # remembered between calls to insert(). 
+    # after the last insertion. ie it does not allow the colors to be
+    # remembered between calls to insert().
     my @ansitags = ();
 
     # Current text string
@@ -276,7 +276,7 @@ Tk::TextANSIColor - Tk::Text widget with support for ANSI color escape codes
   $wid->insert($pos, $string, ?taglist, ?string, ?taglist);
   $string_with_escape_codes = $wid->getansi('0.0','end');
 
-  use Term::ANSIColor; 
+  use Term::ANSIColor;
   $red = color('red');  # Retrieve color codes
   $bold = color('bold');
   $wid->insert('end', "$red red text $bold with bold\n");
@@ -344,7 +344,7 @@ This widget uses the following tags internally:
   ANSIfgCOL - foreground color
   ANSIbgCOL - background color
 
-where COL can be one of black, red, green, yellow, blue, magenta, 
+where COL can be one of black, red, green, yellow, blue, magenta,
 cyan or white.
 
 If required, the tags can be altered after the widget is created by
