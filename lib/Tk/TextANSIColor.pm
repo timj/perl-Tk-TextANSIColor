@@ -61,6 +61,20 @@ sub InitObject {
 #  return $widget;
 }
 
+sub new {
+  my $class = shift;
+  my $widget = $class->SUPER::new(@_);
+
+  # Redefine ANSIbd -- attempt to clone current font and set weight.
+  # Do this here rather than in InitObject because the widget may not
+  # have configured its font there.
+  eval {
+    $widget->tagConfigure(
+      "ANSIbd", -font => $widget->cget('-font')->Clone(-weight => 'bold'));
+  };
+
+  return $widget;
+}
 
 
 # Sub-classed insert method
