@@ -375,7 +375,7 @@ The C<Tk> module is also required.
 
 =head1 SEE ALSO
 
-L<Tk::Text>, L<Term::ANSIColor>
+L<Tk::Text>, L<Term::ANSIColor>, L<Tk::ROTextANSIColor>
 
 =head1 AUTHOR
 
