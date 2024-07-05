@@ -26,10 +26,10 @@ Installation
 
 This is a standard perl module. To install:
 
-  % perl Makefile.PL
-  % make
-  % make test
-  % make install
+  % perl Build.PL
+  % ./Build
+  % ./Build test
+  % ./Build install
 
 The tests require access to a graphics display.
 
