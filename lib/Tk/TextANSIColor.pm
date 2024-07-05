@@ -23,7 +23,10 @@ Construct Tk::Widget 'TextANSIColor';
 # Currently retrieve these from Term::ANSIColor module.
 
 my (%fgcolors, %bgcolors);
-my $clear = color('clear');  # Code to reset control codes
+my %clear = (
+    color('clear') => 1,  # Code to reset control codes
+    "\e[m" => 1,          # Alternate form with no parameter
+);
 
 my $code_bold = color('bold');
 my $code_uline= color('underline');
@@ -120,7 +123,7 @@ sub insert {
     # Note that this pattern also checks for the case when
     # multiple escape codes are embedded together separated
     # by semi-colons.
-    my @split = split /(\e\[(?:\d{1,2};?)+m)/, $text;
+    my @split = split /(\e\[(?:\d{0,2};?)+m)/, $text;
 
     # Array containing the tags to use with the insertion
     # Note that this routine *always* assumes the colors are reset
@@ -167,9 +170,8 @@ sub insert {
 
         # Loop over all the escape sequences
         for my $esc (@escs) {
-
           # Check what type of escape
-          if ($esc eq $clear) {
+          if (exists $clear{$esc}) {
             # Clear all escape sequences
             @ansitags = ();
           } elsif (exists $fgcolors{$esc}) {
