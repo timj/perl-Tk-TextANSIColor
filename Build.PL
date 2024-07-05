@@ -12,7 +12,7 @@ use File::Spec;
 # under the same terms as Perl itself
 
 my $file = File::Spec->catfile(File::Spec->curdir, "lib", "Tk",
-			       "TextANSIColor.pm");
+                               "TextANSIColor.pm");
 
 # Set it up.
 my $build = Module::Build->new

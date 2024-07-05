@@ -56,7 +56,7 @@ sub InitObject {
   # Underline
   $widget->tagConfigure("ANSIul", -underline => 1);
   $widget->tagConfigure("ANSIbd",
-			-font => $widget->Font(weight => "bold") );
+                        -font => $widget->Font(weight => "bold") );
 
 #  return $widget;
 }
@@ -122,62 +122,62 @@ sub insert {
 
       # If we have a plain string, just store it
       if ($part !~ /^\e/) {
-	$cur_text = $part;
+        $cur_text = $part;
       } else {
-	# We have an escape sequence
-	# Need to store the current string with required tags
-	# Include the ansi tags and the user-supplied tag list
-	push(@insert_array, $cur_text, [@taglist, @ansitags])
-	  if defined $cur_text;
+        # We have an escape sequence
+        # Need to store the current string with required tags
+        # Include the ansi tags and the user-supplied tag list
+        push(@insert_array, $cur_text, [@taglist, @ansitags])
+          if defined $cur_text;
 
-	# There is no longer a 'current string'
-	$cur_text = undef;
+        # There is no longer a 'current string'
+        $cur_text = undef;
 
-	# The escape sequence can have semi-colon separated bits
-	# in it. Need to strip off the \e[ and the m. Split on
-	# semi-colon and then reconstruct before comparing
-	# We know it matches \e[....m so use substr
+        # The escape sequence can have semi-colon separated bits
+        # in it. Need to strip off the \e[ and the m. Split on
+        # semi-colon and then reconstruct before comparing
+        # We know it matches \e[....m so use substr
 
-	# Only bother if we have a semi-colon
+        # Only bother if we have a semi-colon
 
-	my @escs = ($part);
-	if ($part =~ /;/) {
-	  my $strip = substr($part, 2, length($part) - 3);
+        my @escs = ($part);
+        if ($part =~ /;/) {
+          my $strip = substr($part, 2, length($part) - 3);
 
-	  # Split on ; (overwriting @escs)
-	  @escs = split(/;/,$strip);
+          # Split on ; (overwriting @escs)
+          @escs = split(/;/,$strip);
 
-	  # Now attach the correct escape sequence
-	  foreach (@escs) { $_ = "\e[${_}m" }
-	}
+          # Now attach the correct escape sequence
+          foreach (@escs) { $_ = "\e[${_}m" }
+        }
 
-	# Loop over all the escape sequences
-	for my $esc (@escs) {
+        # Loop over all the escape sequences
+        for my $esc (@escs) {
 
-	  # Check what type of escape
-	  if ($esc eq $clear) {
-	    # Clear all escape sequences
-	    @ansitags = ();
-	  } elsif (exists $fgcolors{$esc}) {
-	    # A foreground color has been specified
-	    push(@ansitags, $fgcolors{$esc});
-	  } elsif (exists $bgcolors{$esc}) {
-	    # A background color
-	    push(@ansitags, $bgcolors{$esc});
-	  } elsif ($esc eq $code_bold) {
-	    # Boldify
-	    push(@ansitags, "ANSIbd");
-	  } elsif ($esc eq $code_uline) {
-	    # underline
-	    push(@ansitags, "ANSIul");
-	  } else {
-	    print "Unrecognised control code - ignoring\n";
-	    foreach (split //, $esc) {
-	      print ord($_) . ": $_\n";
-	    }
-	  }
-	
-	}
+          # Check what type of escape
+          if ($esc eq $clear) {
+            # Clear all escape sequences
+            @ansitags = ();
+          } elsif (exists $fgcolors{$esc}) {
+            # A foreground color has been specified
+            push(@ansitags, $fgcolors{$esc});
+          } elsif (exists $bgcolors{$esc}) {
+            # A background color
+            push(@ansitags, $bgcolors{$esc});
+          } elsif ($esc eq $code_bold) {
+            # Boldify
+            push(@ansitags, "ANSIbd");
+          } elsif ($esc eq $code_uline) {
+            # underline
+            push(@ansitags, "ANSIul");
+          } else {
+            print "Unrecognised control code - ignoring\n";
+            foreach (split //, $esc) {
+              print ord($_) . ": $_\n";
+            }
+          }
+
+        }
       }
     }
 
@@ -215,23 +215,23 @@ sub getansi {
 
       if ($xdump[$i+1] =~ /^ANSIfg(\w+)/) {
 
-	$res .= color($1);
-	$tagflag = 1;
-	
+        $res .= color($1);
+        $tagflag = 1;
+
       } elsif ($xdump[$i+1] =~ /^ANSIbg(\w+)/) {
 
-	$res .= color("on_$1");
-	$tagflag = 1;
-	
+        $res .= color("on_$1");
+        $tagflag = 1;
+
       } elsif ($xdump[$i+1] =~ /^ANSIbd/) {
 
-	$res .= color('bold');
-	$tagflag = 1;
-	
+        $res .= color('bold');
+        $tagflag = 1;
+
       } elsif ($xdump[$i+1] =~ /^ANSIul/) {
 
-	$res .= color('underline');
-	$tagflag = 1;
+        $res .= color('underline');
+        $tagflag = 1;
 
       }
 
