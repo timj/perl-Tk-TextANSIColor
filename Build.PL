@@ -23,10 +23,9 @@ my $build = Module::Build->new
    author => [
               'Tim Jenness <tjenness@cpan.org>',
              ],
-   dist_version => 0.16,
    meta_merge => {
                resources =>  {
-                              repository => "git://github.com/timj/perl-Tk-TextANSIColor.git",
+                              repository => "https://github.com/timj/perl-Tk-TextANSIColor.git",
                              },
                 },
    requires => {

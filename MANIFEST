@@ -10,3 +10,4 @@ t/rotext.t
 Changes
 META.yml
 MANIFEST.SKIP
+META.json
